@@ -123,7 +123,7 @@ let many1Chars p =
 let parseString p str =
     parse p (Parsor.Environment.ConsoleEnvironment()) (Parsor.Input.StringInput str)
 
-let private parseSign : Parsor<char, int> =
+let internal parseSign : Parsor<char, int> =
     (skipChar '+' <!> fun() -> parsor.Return 1) ^|
     (skipChar '-' <!> fun() -> parsor.Return -1) ^|
     parsor.Return 1
