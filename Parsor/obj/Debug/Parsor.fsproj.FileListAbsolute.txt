@@ -1,0 +1,6 @@
+D:\ProjektyFS\Parsor\Parsor\bin\Debug\Parsor.XML
+D:\ProjektyFS\Parsor\Parsor\bin\Debug\Parsor.dll
+D:\ProjektyFS\Parsor\Parsor\bin\Debug\Parsor.pdb
+D:\ProjektyFS\Parsor\Parsor\obj\Debug\ResolveAssemblyReference.cache
+D:\ProjektyFS\Parsor\Parsor\obj\Debug\Parsor.dll
+D:\ProjektyFS\Parsor\Parsor\obj\Debug\Parsor.pdb

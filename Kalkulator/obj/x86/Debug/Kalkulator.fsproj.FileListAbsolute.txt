@@ -1,0 +1,9 @@
+D:\ProjektyFS\Parsor\Kalkulator\bin\Debug\Kalkulator.XML
+D:\ProjektyFS\Parsor\Kalkulator\bin\Debug\Kalkulator.exe
+D:\ProjektyFS\Parsor\Kalkulator\bin\Debug\Kalkulator.pdb
+D:\ProjektyFS\Parsor\Kalkulator\bin\Debug\Parsor.dll
+D:\ProjektyFS\Parsor\Kalkulator\bin\Debug\Parsor.pdb
+D:\ProjektyFS\Parsor\Kalkulator\bin\Debug\Parsor.xml
+D:\ProjektyFS\Parsor\Kalkulator\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\ProjektyFS\Parsor\Kalkulator\obj\x86\Debug\Kalkulator.exe
+D:\ProjektyFS\Parsor\Kalkulator\obj\x86\Debug\Kalkulator.pdb
