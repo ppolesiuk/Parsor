@@ -1,9 +1,0 @@
-D:\ProjektyFS\Parsor\Kalkulator\obj\x86\Release\ResolveAssemblyReference.cache
-D:\ProjektyFS\Parsor\Kalkulator\bin\Release\Kalkulator.XML
-D:\ProjektyFS\Parsor\Kalkulator\bin\Release\Kalkulator.exe
-D:\ProjektyFS\Parsor\Kalkulator\bin\Release\Kalkulator.pdb
-D:\ProjektyFS\Parsor\Kalkulator\bin\Release\Parsor.dll
-D:\ProjektyFS\Parsor\Kalkulator\bin\Release\Parsor.pdb
-D:\ProjektyFS\Parsor\Kalkulator\bin\Release\Parsor.xml
-D:\ProjektyFS\Parsor\Kalkulator\obj\x86\Release\Kalkulator.exe
-D:\ProjektyFS\Parsor\Kalkulator\obj\x86\Release\Kalkulator.pdb

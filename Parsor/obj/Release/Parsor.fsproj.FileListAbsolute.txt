@@ -1,6 +1,0 @@
-D:\ProjektyFS\Parsor\Parsor\bin\Release\Parsor.XML
-D:\ProjektyFS\Parsor\Parsor\bin\Release\Parsor.dll
-D:\ProjektyFS\Parsor\Parsor\bin\Release\Parsor.pdb
-D:\ProjektyFS\Parsor\Parsor\obj\Release\ResolveAssemblyReference.cache
-D:\ProjektyFS\Parsor\Parsor\obj\Release\Parsor.dll
-D:\ProjektyFS\Parsor\Parsor\obj\Release\Parsor.pdb
