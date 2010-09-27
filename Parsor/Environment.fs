@@ -40,3 +40,14 @@ type ListEnvironment() =
             | FatalError(position, message) ->
                 MsgFatalError(position, message) |> messages.Add;
                 None
+
+type NullEnvironment() =
+    interface IParsorEnvironment with
+        member this.Warning(position, message) = ()
+        member this.Error(position, message) = ()
+        member this.Parse parsor input =
+            try
+                parsor (this, input) |> snd |> Some
+            with
+            | FatalError(position, message) ->
+                None
