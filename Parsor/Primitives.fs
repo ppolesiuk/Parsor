@@ -80,6 +80,16 @@ let skipChar c : Parsor<char, unit> =
             raise <| FatalError(input.Position, 
                 "Unexpected character : " + charToString input.Head + ", expected " + charToString c)
 
+let skipCharIgnoreCase c : Parsor<char, unit> =
+    fun (env, input) ->
+        if input.IsEmpty then
+            raise <| FatalError(input.Position, "Unexpected end of stream, expected " + charToString c)
+        else if Char.ToUpper input.Head = Char.ToUpper c then
+            (input.Tail, ())
+        else
+            raise <| FatalError(input.Position, 
+                "Unexpected character : " + charToString input.Head + ", expected " + charToString c)
+
 let pChar c : Parsor<char, char> =
     fun (env, input) ->
         if input.IsEmpty then
@@ -121,6 +131,10 @@ let getToken : Parsor<'Input, 'Input> =
 let skipString str : Parsor<char, unit> =
     parsor{
         for c in str do do! skipChar c
+    }
+let skipStringIgnoreCase str : Parsor<char, unit> =
+    parsor{
+        for c in str do do! skipCharIgnoreCase c
     }
 
 let manyChars p = foldl "" (fun s c -> s + c.ToString()) p
