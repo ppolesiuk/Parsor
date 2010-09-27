@@ -100,6 +100,17 @@ let skipToken token : Parsor<'Input, unit> =
             raise <| FatalError(input.Position, 
                 "Unexpected token : " + input.Head.ToString() + ", expected " + token.ToString())
 
+let skipLine : Parsor<char, unit> =
+    let rec skip (env, input : IParsorInput<char>) =
+        if input.IsEmpty then
+            (input, ())
+        else if input.Head = '\n' then
+            (input.Tail, ())
+        else
+            skip (env, input.Tail)
+    in
+        skip
+
 let getToken : Parsor<'Input, 'Input> =
     fun (env, input) ->
         if input.IsEmpty then
