@@ -70,6 +70,16 @@ let parseChar pred name : Parsor<char, char> =
             raise <| FatalError(input.Position, 
                 "Unexpected character : " + charToString input.Head + ", expected " + name)
 
+let skipCharPred pred name : Parsor<char, unit> =
+    fun (env, input) ->
+        if input.IsEmpty then
+            raise <| FatalError(input.Position, "Unexpected end of stream, expected " + name)
+        else if input.Head |> pred then
+            (input.Tail, ())
+        else
+            raise <| FatalError(input.Position, 
+                "Unexpected character : " + charToString input.Head + ", expected " + name)
+
 let skipChar c : Parsor<char, unit> =
     fun (env, input) ->
         if input.IsEmpty then
