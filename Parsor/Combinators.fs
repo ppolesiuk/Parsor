@@ -23,6 +23,24 @@ let skipMany1 p =
         return! skipMany p
     }
 
+let many (p : Parsor<'Input, 'T>) : Parsor<'Input, 'T list> =
+    let rec resultParsor(env, inp) =
+        try
+            let (rInp, x) = p(env, inp) in
+            let (rrInp, xs) = resultParsor(env, rInp) in
+                (rrInp, x::xs)
+        with
+        | FatalError _ -> (inp, [])
+    in
+        resultParsor
+
+let many1 p =
+    parsor{
+        let! x = p
+        let! xs = many p
+        return x::xs
+    }
+
 let tryParse (p : Parsor<'Input, 'T>) : Parsor<'Input, 'T option> =
     fun (env, inp) ->
         try

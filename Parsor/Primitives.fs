@@ -14,6 +14,10 @@ let eof : Parsor<'Input, unit> =
         else
             raise <| FatalError(input.Position, "Unexpected end of file")
 
+let getPos : Parsor<'Input, string> =
+    fun (env, input) ->
+        (input, input.Position)
+
 let warning message : Parsor<'Input, unit> =
     fun (env, input) ->
         env.Error(input.Position, message);
