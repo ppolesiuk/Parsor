@@ -5,13 +5,14 @@ open Parsor.Primitives
 open Parsor.Expresion
 
 let ws = whiteSpace
-let expr = ExpresionParsor<char, float>()
-let func str = skipString str .>> notFollowedBy (letter <|> digit) "letter or digit" >>. ws
+let expr = ExpresionParsor<char, unit, float>()
+let func str = skipString str .>> notFollowedBy (letter <|> digit) >>. ws
 
 let atom =
-    (skipChar '(' <!> fun () -> ws >>. expr.Parsor .>> skipChar ')' .>> ws) ^|
-    (pfloat .>> ws <!> parsor.Return) ^|
-    fatalError "expected expresion"
+    (
+        (skipChar '(' <!> fun () -> ws >>. expr.Parsor .>> skipChar ')' .>> ws) <|>
+        (pfloat .>> ws)
+    ) <??> "atom"
 
 do
     expr.Atom <- atom
@@ -29,8 +30,7 @@ let allParsor = ws >>. expr.Parsor .>> eof
 
 let main =
     while true do
-        match parseString allParsor <| System.Console.ReadLine() with
+        match System.Console.ReadLine() |> parseString allParsor () (OutputConsole()) with
         | Success x ->
             System.Console.WriteLine x
-        | Error(pos, err) ->
-            System.Console.WriteLine("Error at {0} : {1}", pos, err)
+        | Error -> ()

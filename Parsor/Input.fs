@@ -3,6 +3,11 @@
 open Parsor.Core
 open System.IO
 
+type LineColumnPosition(line : int, column : int) =
+    interface IPosition
+    override this.ToString() = 
+        "line " + line.ToString() + ", column " + column.ToString();
+
 type StringInput(inputString : string, position, line, column) =
     new(inputString) = StringInput(inputString, 0, 1, 1)
     interface IParsorInput<char> with
@@ -15,8 +20,7 @@ type StringInput(inputString : string, position, line, column) =
                 StringInput(inputString, position + 1, line + 1, 1) :> IParsorInput<char>
             else
                 StringInput(inputString, position + 1, line, column + 1) :> IParsorInput<char>
-        member this.Position =
-            "line " + line.ToString() + ", column " + column.ToString()
+        member this.Position = LineColumnPosition(line, column) :> IPosition;
 
 type LazyInput<'T>(position, data : ('T * (unit -> IParsorInput<'T>)) option) as self =
     let mutable tail = self :> IParsorInput<'T>
@@ -65,9 +69,8 @@ type CharStreamInput(inputStream : Stream, line, column) =
                 tail :> IParsorInput<char>
             | _ ->
                 raise <| EndOfStreamException()
-        member this.Position =
-            "line " + line.ToString() + ", column " + column.ToString()
-
+        member this.Position = LineColumnPosition(line, column) :> IPosition;
+            
 and private CharStreamInputState = 
     | NotEvaluated
     | EndOfStream
